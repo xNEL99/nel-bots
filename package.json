@@ -1,0 +1,21 @@
+{
+  "name": "nel-bots",
+  "version": "1.0.0",
+  "description": "Best bots for agar clones",
+  "main": "bots.js",
+  "scripts": {
+    "test": "cd socks && node socks.js && cd .. && node bots.js",
+    "start": "node bots.js"
+  },
+  "author": {
+    "name": "NEL99",
+    "email": "nel99@protonmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^1.7.3",
+    "socket.io": "^2.0.4",
+    "socks": "^2.1.1",
+    "ws": "^3.3.3"
+  }
+}

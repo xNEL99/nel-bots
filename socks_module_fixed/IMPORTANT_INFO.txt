@@ -1,0 +1,5 @@
+This is a old version of 'socks' npm module with the agent property working.
+The Agent property was removed on the latest version of this module that's why i'm adding it here.
+Just replace the content of 'socks' folder on 'node_modules' for the content inside this folder.
+
+-NEL99

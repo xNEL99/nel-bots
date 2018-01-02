@@ -1,0 +1,27 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "env": {
+        "node": true,
+        "es6": true,
+        "browser": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "for-direction": "error",
+        "no-console": "off",
+        "no-debugger": "off",
+        "eqeqeq": ["error", "always"],
+        "no-var": "error",
+        "no-unused-vars": "off",
+        "no-undef": "off",
+        "object-shorthand": "error",
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "quote-props": ["error", "as-needed"],
+        "prefer-template": "error",
+        "no-useless-concat": "error"
+    }
+}
