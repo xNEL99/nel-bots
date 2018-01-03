@@ -18,7 +18,7 @@ io.on('connection', socket => {
     socket.on('start', (origin, ip) => {
         data.origin = origin;
         data.serverIP = ip;
-        if(data.origin === 'http://agar.red'){
+        if(data.origin === 'http://agar.red' || data.origin === 'http://agar.pro'){
             let id = 0;
             setInterval(() => {
                 if(id < socksList.length){
@@ -70,6 +70,12 @@ class Bot extends Packets {
                 type: 5
             }
         });
+        this.minX = 0;
+        this.minY = 0;
+        this.maxX = 0;
+        this.maxY = 0;
+        this.offsetX = 0;
+        this.offsetY = 0;
         this.connectionAttempts = 0;
         this.connect();
     }
@@ -81,6 +87,7 @@ class Bot extends Packets {
         });
         this.ws.binaryType = 'nodebuffer';
         this.ws.onopen = this.onopen.bind(this);
+        this.ws.onmessage = this.onmessage.bind(this);
         this.ws.onerror = this.onerror.bind(this);
         this.ws.onclose = this.onclose.bind(this);
     }
@@ -99,9 +106,22 @@ class Bot extends Packets {
             this.send(this[data.origin]().spawn(this.name));
         }.bind(this), 1000);
         setInterval(function(){
-            this.send(this[data.origin]().move(data.mouseX, data.mouseY));
+            this.send(this[data.origin]().move(data.mouseX + this.offsetX, data.mouseY + this.offsetY));
         }.bind(this), 100);
         if(process.argv[2] === '--verbose') console.log(`[Bot#${this.id}]: Connection opened`);
+    }
+    onmessage(message){
+        const msg = new Buffer(message.data);
+        if(data.origin === 'http://agar.pro'){
+            if(msg.readUInt8(0) === 64 && msg.byteLength === 33){
+                this.minX = msg.readDoubleLE(1);
+                this.minY = msg.readDoubleLE(9);
+                this.maxX = msg.readDoubleLE(17);
+                this.maxY = msg.readDoubleLE(25);
+                this.offsetX = (this.minX + this.maxX) / 2;
+                this.offsetY = (this.minY + this.maxY) / 2;
+            }
+        }
     }
     onerror(err){
         this.connectionAttempts++;
