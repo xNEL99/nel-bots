@@ -11,7 +11,7 @@ node bots.js --verbose
 ### Scrap & Check Socks
 #### I added my socks5 scrapper & checker on the repository (its the 'socks' folder)
 ```
-cd socks
+cd socks_checker
 node socks.js
 ```
 

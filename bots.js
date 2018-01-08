@@ -5,7 +5,7 @@ const fs = require('fs');
 const Packets = require('./packets');
 
 let bots = [];
-const socksList = fs.readFileSync('./socks/socks.txt', 'utf8').trim().split('\n');
+const socksList = fs.readFileSync('./socks_checker/socks.txt', 'utf8').trim().split('\n');
 const data = {
     origin: '',
     serverIP: '',

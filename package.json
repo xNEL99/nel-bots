@@ -4,7 +4,7 @@
   "description": "Best bots for agar clones",
   "main": "bots.js",
   "scripts": {
-    "test": "cd socks && node socks.js && cd .. && node bots.js",
+    "test": "cd socks_checker && node socks.js && cd .. && node bots.js",
     "start": "node bots.js"
   },
   "author": {
