@@ -1,4 +1,5 @@
 # Nel Bots
+### Update: My Socks scrapper & checker doesn't works anymore (soon i will launch a newer and better bots version ;P)
 ### Start bots
 ```shell
 node bots.js
